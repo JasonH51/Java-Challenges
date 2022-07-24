@@ -2,11 +2,11 @@ package Challenges;
 
 public class BankAccount {
 	
-	int accountNumber;
-	double balance;
-	String customerName;
-	String email;
-	int phoneNumber;
+	private int accountNumber;
+	private double balance;
+	private String customerName;
+	private String email;
+	private int phoneNumber;
 	
 	public BankAccount() {
 		accountNumber = 0;
@@ -64,13 +64,18 @@ public class BankAccount {
 		}
 	}
 	public double withdraw(double num) {
-		if(balance < num) {
-			System.out.println("Insufficient funds.");
-			return 0d;
+		if(num > 0) {
+			if((this.balance - num) > 0) {
+				this.balance -= num;
+				System.out.println("Your new balance is " + this.balance);
+				return num;
+			} else {
+				System.out.println("Insufficient funds.");
+				return 0d;
+			}
 		} else {
-			balance -= num;
-			System.out.println("You're new balance is " + balance);
-			return num;
+			System.out.println("You can't do that.");
+			return 0d;
 		}
 	}
 }
